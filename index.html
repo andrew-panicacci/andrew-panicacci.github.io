@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrew Panicacci — Sports Content Creator & Social Media Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    .font-anton { font-family: 'Anton', sans-serif; }
+    .hero-name { font-size: clamp(68px, 8.5vw, 122px); line-height: 0.91; letter-spacing: -0.01em; }
+    .overline { letter-spacing: 0.18em; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #4fd1c5; }
+    .card-rise { transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .card-rise:hover { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(0,0,0,0.18); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #4fd1c5; border-radius: 4px; }
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+    .tag-teal { font-size: 0.7rem; background: rgba(79,209,197,0.1); color: #4fd1c5; border: 1px solid rgba(79,209,197,0.3); padding: 3px 10px; border-radius: 4px; font-weight: 600; letter-spacing: 0.04em; }
+    .tag-dim { font-size: 0.7rem; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 4px; font-weight: 500; }
+    .chip-dark { font-size: 0.7rem; background: #000; color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: 600; letter-spacing: 0.02em; }
+    .chip-outline { font-size: 0.7rem; background: transparent; color: #555; border: 1px solid #ddd; padding: 4px 12px; border-radius: 4px; font-weight: 500; }
+    .role-pill { font-size: 0.7rem; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.65); padding: 4px 12px; border-radius: 4px; font-weight: 500; }
+    .role-pill-light { font-size: 0.7rem; background: #f3f4f6; color: #444; padding: 4px 12px; border-radius: 4px; font-weight: 500; }
+    section { position: relative; }
+    video { background: #0a0a0a; }
+
+    /* ── Mobile Responsive ── */
+    @media (max-width: 768px) {
+      /* Nav: hide text links, keep logo + CTA */
+      #nav-links a:not(:last-child) { display: none; }
+      #nav-links { gap: 12px; }
+
+      /* Hero: name + photo side by side */
+      #hero-inner { flex-direction: row !important; padding: 84px 16px 28px !important; gap: 14px !important; align-items: flex-start; }
+      #hero-inner > div:first-child { flex: 0 0 57% !important; min-width: 0 !important; }
+      #hero-photo { width: 40% !important; flex-shrink: 0 !important; }
+      #hero-photo img { height: 195px !important; }
+      .hero-name { font-size: clamp(26px, 9vw, 40px) !important; margin-bottom: 8px !important; }
+      #hero-overline { display: none !important; }
+      #hero-tagline { display: none !important; }
+      #hero-contact { display: none !important; }
+      #hero-sub1 { font-size: 13px !important; margin-bottom: 2px !important; }
+      #hero-sub2 { font-size: 13px !important; margin-bottom: 14px !important; }
+      #hero-cta { flex-direction: column !important; gap: 8px !important; margin-bottom: 0 !important; }
+      #hero-cta a { padding: 10px 16px !important; font-size: 11px !important; text-align: center; }
+
+      /* Stats bar: wrap 2x2 */
+      #stats-bar-inner { flex-wrap: wrap; height: auto !important; padding: 16px 20px; gap: 0; }
+      #stats-bar-inner > div[style*="text-align"] { width: 50%; padding: 18px 0; }
+      #stats-bar-inner > div[style*="width:1px"] { display: none; }
+
+      /* About: stack; jersey image zoomed in to remove black bars */
+      #about-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      #about-photo img { height: 320px !important; object-fit: cover !important; object-position: center 30% !important; }
+
+      /* Skills: 1 col */
+      #skills-grid { grid-template-columns: 1fr !important; }
+
+      /* HER Month campaign: 1 col, reduced padding */
+      #her-text-section { padding: 24px !important; }
+      #her-text-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+      /* Stats strip in content section: 2x2 */
+      #stats-strip { flex-wrap: wrap; }
+      #stats-strip > div { width: 50%; }
+
+      /* Viral screenshots: full-width stacked, tappable */
+      #viral-grid { grid-template-columns: 1fr; gap: 12px; }
+      #viral-grid img { min-height: 180px; cursor: pointer; }
+
+      /* Video grid: 1 col on mobile */
+      #video-grid { grid-template-columns: 1fr; }
+
+      /* Footer: stack */
+      #footer-inner { flex-direction: column; gap: 40px; }
+      #footer-links { gap: 40px; }
+
+      /* Footer CTA heading */
+      footer h2 { font-size: 42px !important; }
+
+      /* Section padding reduction */
+      section { padding-left: 0 !important; padding-right: 0 !important; }
+      section > div { padding-left: 20px !important; padding-right: 20px !important; }
+    }
+
+    /* Athlete Carousel */
+    .carousel-wrap { position: relative; border-radius: 10px; overflow: hidden; }
+    .carousel-track { display: flex; transition: transform 0.35s cubic-bezier(.4,0,.2,1); }
+    .carousel-slide { min-width: 100%; position: relative; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.65); border: none; border-radius: 50%;
+      width: 34px; height: 34px; color: #fff; cursor: pointer; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(4px); transition: background 0.2s; z-index: 5;
+    }
+    .carousel-btn:hover { background: #4fd1c5; color: #000; }
+    .carousel-dot { width: 7px; height: 7px; border-radius: 50%; cursor: pointer; transition: background 0.2s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="#hero" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+      <span class="font-anton" style="font-size:22px;color:#fff;letter-spacing:0.05em;">AP</span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#4fd1c5;display:inline-block;"></span>
+    </a>
+    <div id="nav-links" style="display:flex;align-items:center;gap:32px;">
+      <a href="#about" style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About</a>
+      <a href="#work" style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Work</a>
+      <a href="#skills" style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Skills</a>
+      <a href="#contact" style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Contact</a>
+      <a href="mailto:andrew.panicacci@gmail.com" style="border:1.5px solid #4fd1c5;color:#4fd1c5;padding:8px 18px;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.04em;" onmouseover="this.style.background='#4fd1c5';this.style.color='#000'" onmouseout="this.style.background='transparent';this.style.color='#4fd1c5'">LET'S TALK</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" class="grain" style="min-height:100vh;background:linear-gradient(135deg,#0a0a0a 0%,#0c1512 50%,#0a0a0a 100%);display:flex;flex-direction:column;justify-content:center;padding-top:64px;">
+  <div id="hero-inner" style="max-width:1200px;margin:0 auto;padding:80px 32px 60px;display:flex;align-items:center;gap:64px;position:relative;z-index:2;">
+    <!-- Left -->
+    <div style="flex:1;min-width:0;">
+      <p id="hero-overline" class="overline" style="margin-bottom:24px;">Shoot 360 &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; 2024–2026</p>
+      <h1 class="font-anton hero-name" style="color:#fff;margin-bottom:20px;">ANDREW<br>PANICACCI</h1>
+      <p id="hero-sub1" style="font-size:19px;color:rgba(255,255,255,0.65);font-weight:500;line-height:1.4;margin-bottom:8px;">Sports Content Creator</p>
+      <p id="hero-sub2" style="font-size:19px;color:rgba(255,255,255,0.65);font-weight:500;line-height:1.4;margin-bottom:28px;">&amp; Social Media Strategist</p>
+      <p id="hero-tagline" style="font-size:16px;color:#4fd1c5;font-weight:500;font-style:italic;margin-bottom:36px;line-height:1.5;">"Building basketball brands through storytelling."</p>
+      <div id="hero-cta" style="display:flex;gap:14px;margin-bottom:24px;">
+        <a href="#work" style="background:#4fd1c5;color:#000;padding:14px 28px;border-radius:6px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.05em;" onmouseover="this.style.background='#38b2ac'" onmouseout="this.style.background='#4fd1c5'">VIEW MY WORK</a>
+        <a href="#contact" style="border:1.5px solid rgba(255,255,255,0.25);color:#fff;padding:14px 28px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.05em;" onmouseover="this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.25)'">GET IN TOUCH</a>
+      </div>
+      <div id="hero-contact" style="display:flex;align-items:center;gap:20px;">
+        <a href="mailto:andrew.panicacci@gmail.com" style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;" onmouseover="this.style.color='#4fd1c5'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          andrew.panicacci@gmail.com
+        </a>
+        <span style="color:rgba(255,255,255,0.15);">·</span>
+        <span style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,0.5);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (415) 446-8556 &nbsp;·&nbsp; Portland, OR
+        </span>
+      </div>
+    </div>
+    <!-- Right: Photo -->
+    <div id="hero-photo" style="width:400px;flex-shrink:0;position:relative;">
+      <div style="border-radius:16px;overflow:hidden;position:relative;">
+        <img src="images/headshot.jpeg" alt="Andrew Panicacci" style="width:100%;height:500px;object-fit:cover;object-position:top center;display:block;" onerror="this.src='https://placehold.co/400x500/111/333?text=AP'">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,rgba(79,209,197,0.15),transparent);"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#4fd1c5;"></div>
+      </div>
+      <div style="position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);border:1px solid rgba(79,209,197,0.3);padding:8px 14px;border-radius:6px;">
+        <p style="font-size:11px;color:#4fd1c5;font-weight:700;letter-spacing:0.1em;">PORTLAND, OR</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div style="position:relative;z-index:2;border-top:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.4);">
+    <div id="stats-bar-inner" style="max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:90px;">
+      <div style="text-align:center;">
+        <p class="font-anton" style="font-size:34px;color:#4fd1c5;line-height:1;">1,500+</p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:4px;">Videos Created</p>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+      <div style="text-align:center;">
+        <p class="font-anton" style="font-size:34px;color:#4fd1c5;line-height:1;">60+</p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:4px;">Locations Supported</p>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+      <div style="text-align:center;">
+        <p class="font-anton" style="font-size:28px;color:#4fd1c5;line-height:1;">NBA / WNBA</p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:4px;">Athletes Featured</p>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+      <div style="text-align:center;">
+        <p class="font-anton" style="font-size:34px;color:#4fd1c5;line-height:1;">2 YRS</p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:4px;">High-Volume Production</p>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+      <div style="text-align:center;">
+        <p class="font-anton" style="font-size:34px;color:#4fd1c5;line-height:1;">10M+</p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:4px;">Views Generated</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ME ═══ -->
+<section id="about" style="background:#f9f9f9;padding:96px 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+    <p class="overline" style="margin-bottom:40px;">About Me</p>
+    <div id="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+      <!-- Left: Photo -->
+      <div id="about-photo" style="position:relative;">
+        <div style="border-radius:16px;overflow:hidden;position:relative;">
+          <!-- Increase scale to zoom in, negative margin-top pulls photo up -->
+          <img src="images/jersey.PNG" alt="Andrew Panicacci on court"
+               style="width:100%;height:520px;object-fit:cover;object-position:50% 45%;display:block;"
+               onerror="this.src='https://placehold.co/480x520/111/333?text=AP'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#4fd1c5;"></div>
+        </div>
+      </div>
+      <!-- Right: Bio -->
+      <div>
+        <h2 class="font-anton" style="font-size:46px;color:#000;line-height:0.95;margin-bottom:28px;">THE STORY<br>BEHIND<br>THE LENS.</h2>
+        <p style="color:#555;font-size:15px;line-height:1.75;margin-bottom:16px;">
+          Social media strategist and content creator with experience producing <strong style="color:#000;">1,500+ pieces of sports content</strong> across Instagram, TikTok, YouTube, and digital campaigns.
+        </p>
+        <p style="color:#555;font-size:15px;line-height:1.75;margin-bottom:32px;">
+          Specialized in basketball storytelling, short-form video strategy, athlete branding, and franchise marketing systems. I've executed national campaigns, league promotions, event coverage, and technology-focused sports marketing for one of basketball's fastest-growing brands — with 60+ locations across the US and internationally.
+        </p>
+        <div style="margin-bottom:20px;">
+          <p style="font-size:10px;font-weight:700;color:#aaa;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;">Platforms</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="chip-dark">Instagram</span>
+            <span class="chip-dark">TikTok</span>
+            <span class="chip-dark">YouTube</span>
+            <span class="chip-dark">Facebook</span>
+          </div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <p style="font-size:10px;font-weight:700;color:#aaa;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;">Tools</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="chip-outline">CapCut</span>
+            <span class="chip-outline">Adobe Premiere Pro</span>
+            <span class="chip-outline">Mobile-First Production</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:10px;font-weight:700;color:#aaa;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;">Industry</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="chip-outline">Basketball Media</span>
+            <span class="chip-outline">Athlete Storytelling</span>
+            <span class="chip-outline">Franchise Marketing</span>
+            <span class="chip-outline">Sports Technology</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills" style="background:#fff;padding:96px 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+    <p class="overline" style="margin-bottom:12px;">What I Do</p>
+    <h2 class="font-anton" style="font-size:52px;color:#000;margin-bottom:52px;line-height:0.95;">SKILLS &amp;<br>EXPERTISE</h2>
+    <div id="skills-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+      <div class="card-rise" style="border:1px solid #e5e5e5;border-top:3px solid #4fd1c5;border-radius:16px;padding:36px;background:#fff;">
+        <div style="font-size:28px;margin-bottom:16px;">🎬</div>
+        <h3 class="font-anton" style="font-size:22px;color:#000;margin-bottom:20px;">CONTENT CREATION</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Instagram Reels &amp; Short-Form Video</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>TikTok Production</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>YouTube Shorts</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Athlete Interviews &amp; Features</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Hype Videos &amp; Brand Documentaries</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Behind-the-Scenes &amp; Event Coverage</li>
+        </ul>
+      </div>
+
+      <div class="card-rise" style="border:1px solid #e5e5e5;border-top:3px solid #4fd1c5;border-radius:16px;padding:36px;background:#fff;">
+        <div style="font-size:28px;margin-bottom:16px;">📈</div>
+        <h3 class="font-anton" style="font-size:22px;color:#000;margin-bottom:20px;">SOCIAL STRATEGY</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Audience Growth &amp; Engagement</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Brand Voice Development</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Content Pillar Frameworks</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Platform-Native Strategy</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Hook &amp; Caption Writing</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Scalable Franchise Content Systems</li>
+        </ul>
+      </div>
+
+      <div class="card-rise" style="border:1px solid #e5e5e5;border-top:3px solid #4fd1c5;border-radius:16px;padding:36px;background:#fff;">
+        <div style="font-size:28px;margin-bottom:16px;">🎥</div>
+        <h3 class="font-anton" style="font-size:22px;color:#000;margin-bottom:20px;">VIDEO PRODUCTION</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Adobe Premiere Pro</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>CapCut</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Mobile-First Editing &amp; Filming</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Voiceover Scripting</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Vertical Video Optimization</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Cinematic Sports Storytelling</li>
+        </ul>
+      </div>
+
+      <div class="card-rise" style="border:1px solid #e5e5e5;border-top:3px solid #4fd1c5;border-radius:16px;padding:36px;background:#fff;">
+        <div style="font-size:28px;margin-bottom:16px;">🏀</div>
+        <h3 class="font-anton" style="font-size:22px;color:#000;margin-bottom:20px;">SPORTS MARKETING</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>National Campaign Execution</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Athlete Branding &amp; Storytelling</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Event Coverage &amp; Sports Media</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Franchise Marketing Support</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Basketball Technology Marketing</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555;"><span style="width:5px;height:5px;border-radius:50%;background:#4fd1c5;flex-shrink:0;"></span>Youth Sports Development</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED PROJECTS ═══ -->
+<section id="work" style="background:#0a0a0a;padding:96px 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+    <p class="overline" style="margin-bottom:12px;">Featured Work</p>
+    <h2 class="font-anton" style="font-size:52px;color:#fff;margin-bottom:52px;line-height:0.95;">CAMPAIGNS &amp;<br>PROJECTS</h2>
+
+    <!-- HER Month Campaign -->
+    <div style="border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;background:#fff;">
+      <!-- Image — inset with padding (~25% smaller) -->
+      <div style="background:#f8f8f8;padding:36px 13%;position:relative;">
+        <div style="position:absolute;top:16px;left:16px;background:#4fd1c5;padding:6px 14px;border-radius:4px;z-index:2;">
+          <p style="font-size:10px;font-weight:800;color:#000;letter-spacing:0.12em;text-transform:uppercase;">HER Month Campaign</p>
+        </div>
+        <img src="images/the future of basketball is HER.PNG" alt="The Future of Basketball is HER"
+             style="width:100%;display:block;object-fit:contain;"
+             onerror="this.src='https://placehold.co/1200x500/0a0a0a/4fd1c5?text=HER+Month+Campaign'">
+      </div>
+      <!-- Text — below image, 2-col layout -->
+      <div id="her-text-section" style="padding:44px;">
+        <div id="her-text-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+          <!-- Left: title + description -->
+          <div>
+            <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
+              <span style="font-size:0.7rem;background:rgba(79,209,197,0.12);color:#38b2ac;border:1px solid rgba(79,209,197,0.35);padding:3px 10px;border-radius:4px;font-weight:600;letter-spacing:0.04em;">National Campaign</span>
+              <span style="font-size:0.7rem;background:#f3f4f6;color:#777;border:1px solid #e5e5e5;padding:3px 10px;border-radius:4px;font-weight:500;">Athlete Storytelling</span>
+              <span style="font-size:0.7rem;background:#f3f4f6;color:#777;border:1px solid #e5e5e5;padding:3px 10px;border-radius:4px;font-weight:500;">Brand Development</span>
+            </div>
+            <h3 class="font-anton" style="font-size:34px;color:#000;line-height:1.0;margin-bottom:12px;">HER MONTH<br>CAMPAIGN</h3>
+            <p style="font-size:13px;color:#4fd1c5;font-style:italic;font-weight:500;margin-bottom:14px;">"The Future of Basketball is HER."</p>
+            <p style="font-size:14px;color:#666;line-height:1.8;margin-bottom:20px;">
+              Developed and executed a nationwide women-focused basketball marketing campaign centered around empowering female athletes. Featured former WNBA players, girls basketball clinics, athlete interviews, community events, and Nike-affiliated activations.
+            </p>
+            <!-- Role pills -->
+            <div>
+              <p style="font-size:10px;color:#aaa;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px;">My Role</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="role-pill-light">Campaign Concepting</span>
+                <span class="role-pill-light">Content Production</span>
+                <span class="role-pill-light">Athlete Interviews</span>
+                <span class="role-pill-light">Community Storytelling</span>
+              </div>
+            </div>
+          </div>
+          <!-- Right: athletes + carousel -->
+          <div>
+          <!-- Featured Athletes — names only, no images -->
+          <div style="margin-bottom:16px;">
+            <p style="font-size:10px;color:#aaa;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px;">Featured Athletes</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:11px;color:#333;padding:5px 13px;background:#f3f4f6;border-radius:20px;font-weight:600;cursor:pointer;" onclick="goToSlide(0)">Taylor Hill</span>
+              <span style="font-size:11px;color:#333;padding:5px 13px;background:#f3f4f6;border-radius:20px;font-weight:600;cursor:pointer;" onclick="goToSlide(1)">Olympia Scott</span>
+              <span style="font-size:11px;color:#333;padding:5px 13px;background:#f3f4f6;border-radius:20px;font-weight:600;cursor:pointer;" onclick="goToSlide(2)">Carla McGhee</span>
+            </div>
+          </div>
+
+          <!-- Athlete Image Carousel -->
+          <div style="margin-bottom:20px;">
+            <div class="carousel-wrap" id="athleteCarousel" style="background:#111;">
+              <div class="carousel-track" id="carouselTrack">
+                <!-- Slide 1: Taylor Hill -->
+                <div class="carousel-slide">
+                  <img src="images/Tayler Hill Q-A Thumbnail.jpg" alt="Taylor Hill"
+                       style="width:100%;height:260px;object-fit:contain;background:#0d0d0d;display:block;"
+                       onerror="this.src='https://placehold.co/500x260/111/333?text=Taylor+Hill'">
+                  <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);">
+                    <p style="font-size:9px;color:#4fd1c5;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Athlete Q&amp;A</p>
+                    <p style="font-size:13px;color:#fff;font-weight:600;margin-top:1px;">Taylor Hill</p>
+                  </div>
+                </div>
+                <!-- Slide 2: Olympia Scott -->
+                <div class="carousel-slide">
+                  <img src="images/Olympia Scott Interview Thumbnal.jpg" alt="Olympia Scott"
+                       style="width:100%;height:260px;object-fit:contain;background:#0d0d0d;display:block;"
+                       onerror="this.src='https://placehold.co/500x260/111/333?text=Olympia+Scott'">
+                  <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);">
+                    <p style="font-size:9px;color:#4fd1c5;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Athlete Interview</p>
+                    <p style="font-size:13px;color:#fff;font-weight:600;margin-top:1px;">Olympia Scott</p>
+                  </div>
+                </div>
+                <!-- Slide 3: Carla McGhee -->
+                <div class="carousel-slide">
+                  <img src="images/Carla McGhee Interview .jpg" alt="Carla McGhee"
+                       style="width:100%;height:260px;object-fit:contain;background:#0d0d0d;display:block;"
+                       onerror="this.src='https://placehold.co/500x260/111/333?text=Carla+McGhee'">
+                  <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);">
+                    <p style="font-size:9px;color:#4fd1c5;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Athlete Interview</p>
+                    <p style="font-size:13px;color:#fff;font-weight:600;margin-top:1px;">Carla McGhee</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Arrows -->
+              <button class="carousel-btn" onclick="carouselPrev()" style="left:8px;">&#8249;</button>
+              <button class="carousel-btn" onclick="carouselNext()" style="right:8px;">&#8250;</button>
+              <!-- Dots -->
+              <div style="position:absolute;bottom:10px;right:14px;display:flex;gap:5px;z-index:5;" id="carouselDots">
+                <span class="carousel-dot" data-idx="0" style="background:#4fd1c5;" onclick="goToSlide(0)"></span>
+                <span class="carousel-dot" data-idx="1" style="background:rgba(255,255,255,0.3);" onclick="goToSlide(1)"></span>
+                <span class="carousel-dot" data-idx="2" style="background:rgba(255,255,255,0.3);" onclick="goToSlide(2)"></span>
+              </div>
+            </div>
+          </div>
+
+          </div><!-- end right col -->
+        </div><!-- end 2-col grid -->
+      </div><!-- end text section -->
+    </div><!-- end card -->
+
+  </div>
+</section>
+
+<!-- ═══ CONTENT SAMPLES ═══ -->
+<section id="videos" style="background:#0a0a0a;padding:96px 0;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+    <p class="overline" style="margin-bottom:12px;">Content Samples</p>
+    <h2 class="font-anton" style="font-size:52px;color:#fff;margin-bottom:12px;line-height:0.95;">THE WORK<br>SPEAKS.</h2>
+    <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:48px;">Full reel available on request &nbsp;·&nbsp; <a href="mailto:andrew.panicacci@gmail.com" style="color:#4fd1c5;text-decoration:none;">andrew.panicacci@gmail.com</a></p>
+
+    <!-- Stats strip -->
+    <div id="stats-strip" style="display:flex;border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;margin-bottom:36px;">
+      <div style="flex:1;padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
+        <p class="font-anton" style="font-size:46px;color:#4fd1c5;line-height:1;margin-bottom:6px;">1,500+</p>
+        <p style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase;">Pieces of Content</p>
+      </div>
+      <div style="flex:1;padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
+        <p class="font-anton" style="font-size:46px;color:#4fd1c5;line-height:1;margin-bottom:6px;">60+</p>
+        <p style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase;">Locations Supported</p>
+      </div>
+      <div style="flex:1;padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
+        <p class="font-anton" style="font-size:30px;color:#4fd1c5;line-height:1.1;margin-bottom:6px;">NBA / WNBA</p>
+        <p style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase;">Athletes Featured</p>
+      </div>
+      <div style="flex:1;padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
+        <p class="font-anton" style="font-size:46px;color:#4fd1c5;line-height:1;margin-bottom:6px;">2 YR</p>
+        <p style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase;">High-Vol. Production</p>
+      </div>
+      <div style="flex:1;padding:28px 20px;text-align:center;">
+        <p class="font-anton" style="font-size:46px;color:#4fd1c5;line-height:1;margin-bottom:6px;">10M+</p>
+        <p style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.15em;text-transform:uppercase;">Views Generated</p>
+      </div>
+    </div>
+
+    <!-- Viral proof screenshots -->
+    <div style="margin-bottom:48px;">
+      <p style="font-size:9px;color:rgba(255,255,255,0.22);letter-spacing:0.18em;text-transform:uppercase;font-weight:700;margin-bottom:14px;">Viral Impact — Real Results</p>
+      <div id="viral-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);cursor:pointer;" onclick="showLightbox(this.querySelector('img').src)" title="Tap to enlarge">
+          <img src="images/Coach kels Video Views.jpg" alt="Coach Kel's Viral Video Views"
+               style="width:100%;display:block;object-fit:contain;background:#0d0d0d;min-height:300px;"
+               onerror="this.src='https://placehold.co/600x300/0d0d0d/333?text=Viral+Views'">
+        </div>
+        <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);cursor:pointer;" onclick="showLightbox(this.querySelector('img').src)" title="Tap to enlarge">
+          <img src="images/Viral Video views.jpg" alt="Viral Video Views"
+               style="width:100%;display:block;object-fit:contain;background:#0d0d0d;min-height:300px;"
+               onerror="this.src='https://placehold.co/600x300/0d0d0d/333?text=Viral+Views'">
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-col grid — portrait video cards (single title each) -->
+    <div id="video-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+
+      <div class="card-rise" style="border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:10px 14px 10px;background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:11px;color:#fff;font-weight:600;">Viral Coaching Moment</span>
+        </div>
+        <a href="https://www.instagram.com/reel/DDfypSpPgt0/" target="_blank" style="aspect-ratio:9/16;background:#0a0a0a;position:relative;overflow:hidden;display:block;">
+          <img src="images/vid1.png" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:4px;"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-rise" style="border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:10px 14px 10px;background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:11px;color:#fff;font-weight:600;">Viral Before & After</span>
+        </div>
+        <a href="https://www.instagram.com/reel/C59P3tXyACO/" target="_blank" style="aspect-ratio:9/16;background:#0a0a0a;position:relative;overflow:hidden;display:block;">
+          <img src="images/vid2.png" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:4px;"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-rise" style="border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:10px 14px 10px;background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:11px;color:#fff;font-weight:600;">Women in Basketball</span>
+        </div>
+        <a href="https://www.instagram.com/reel/DVnvtBhgW9p/" target="_blank" style="aspect-ratio:9/16;background:#0a0a0a;position:relative;overflow:hidden;display:block;">
+          <img src="images/vid3.png" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:4px;"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-rise" style="border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:10px 14px 10px;background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:11px;color:#fff;font-weight:600;">POV Gym Tour</span>
+        </div>
+        <a href="https://www.instagram.com/reel/DSQNAudiEi-/" target="_blank" style="aspect-ratio:9/16;background:#0a0a0a;position:relative;overflow:hidden;display:block;">
+          <img src="images/vid4.png" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:4px;"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-rise" style="border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:10px 14px 10px;background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:11px;color:#fff;font-weight:600;">UGC / Brand Moments</span>
+        </div>
+        <a href="https://www.instagram.com/reel/DEqgiVKSOEz/" target="_blank" style="aspect-ratio:9/16;background:#0a0a0a;position:relative;overflow:hidden;display:block;">
+          <img src="images/vid5.png" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:4px;"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-rise" style="border-radius:12px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.07);">
+        <div style="padding:10px 14px 10px;background:#0d0d0d;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-size:11px;color:#fff;font-weight:600;">Athlete Testimonials</span>
+        </div>
+        <a href="https://www.instagram.com/reel/DVs5Tm0Cd9I/" target="_blank" style="aspect-ratio:9/16;background:#0a0a0a;position:relative;overflow:hidden;display:block;">
+          <img src="images/vid6.png" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:4px;"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CONTACT + FOOTER ═══ -->
+<footer id="contact" style="background:#000;padding:96px 0 48px;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+
+    <div style="text-align:center;padding-bottom:72px;margin-bottom:72px;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <p class="overline" style="margin-bottom:16px;">Let's Work Together</p>
+      <h2 class="font-anton" style="font-size:68px;color:#fff;line-height:0.92;margin-bottom:24px;">READY TO BUILD<br>SOMETHING GREAT?</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);max-width:480px;margin:0 auto 36px;line-height:1.7;">
+        Open to opportunities in sports media, content strategy, social media management, and brand storytelling.
+      </p>
+      <a href="mailto:andrew.panicacci@gmail.com" style="display:inline-block;background:#4fd1c5;color:#000;padding:16px 36px;border-radius:7px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.08em;" onmouseover="this.style.background='#38b2ac'" onmouseout="this.style.background='#4fd1c5'">andrew.panicacci@gmail.com</a>
+      <a href="tel:+14154468556" style="display:inline-block;margin-top:12px;border:1.5px solid rgba(255,255,255,0.5);color:#fff;padding:16px 36px;border-radius:7px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.08em;" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.5)'">(415) 446-8556 &nbsp;·&nbsp; Text or call anytime</a>
+    </div>
+
+    <div id="footer-inner" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:56px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span class="font-anton" style="font-size:28px;color:#fff;letter-spacing:0.05em;">AP</span>
+          <span style="color:#4fd1c5;font-family:'Anton',sans-serif;font-size:28px;">.</span>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.25);line-height:1.6;">Portland, Oregon<br>Sports Content &amp; Strategy</p>
+      </div>
+      <div id="footer-links" style="display:flex;gap:64px;">
+        <div>
+          <p style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:20px;">Navigate</p>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="#about" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">About</a>
+            <a href="#work" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Work</a>
+            <a href="#skills" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Skills</a>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:20px;">Connect</p>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <a href="mailto:andrew.panicacci@gmail.com" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#4fd1c5'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Email</a>
+            <a href="https://www.linkedin.com/in/andrew-panicacci-4658432b8/" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#4fd1c5'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">LinkedIn</a>
+            <a href="https://www.instagram.com/andrewpanicacci/" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#4fd1c5'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Instagram</a>
+            <a href="https://www.tiktok.com/@andrewpanicacci" target="_blank" rel="noopener" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='#4fd1c5'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">TikTok</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);">
+      <p style="font-size:11px;color:rgba(255,255,255,0.18);">© 2026 Andrew Panicacci · All Rights Reserved</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.18);">Sports Content Creator &amp; Social Media Strategist</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.96);cursor:zoom-out;align-items:center;justify-content:center;padding:16px;">
+  <img id="lightbox-img" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 0 60px rgba(0,0,0,0.6);">
+  <button onclick="event.stopPropagation();document.getElementById('lightbox').style.display='none'" style="position:absolute;top:20px;right:24px;background:rgba(255,255,255,0.12);border:none;border-radius:50%;width:36px;height:36px;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">✕</button>
+</div>
+
+<!-- ═══ CAROUSEL JS ═══ -->
+<script>
+  let slideIdx = 0;
+  const totalSlides = 3;
+
+  function updateCarousel() {
+    document.getElementById('carouselTrack').style.transform = 'translateX(-' + (slideIdx * 100) + '%)';
+    document.querySelectorAll('[data-idx]').forEach(function(dot) {
+      dot.style.background = parseInt(dot.dataset.idx) === slideIdx ? '#4fd1c5' : 'rgba(255,255,255,0.3)';
+    });
+  }
+
+  function carouselNext() { slideIdx = (slideIdx + 1) % totalSlides; updateCarousel(); }
+  function carouselPrev() { slideIdx = (slideIdx - 1 + totalSlides) % totalSlides; updateCarousel(); }
+  function goToSlide(n) { slideIdx = n; updateCarousel(); }
+
+  // Lightbox for viral screenshots
+  function showLightbox(src) {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.style.display = 'flex';
+  }
+
+  // Seek each video to 1s to show a real thumbnail frame before play
+  document.querySelectorAll('video').forEach(function(v) {
+    function doSeek() { v.currentTime = 1; }
+    if (v.readyState >= 1) {
+      doSeek();
+    } else {
+      v.addEventListener('loadedmetadata', doSeek, { once: true });
+    }
+  });
+</script>
+
+</body>
+</html>

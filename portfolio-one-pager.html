@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrew Panicacci — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 32px;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .font-anton { font-family: 'Anton', sans-serif; }
+
+    .overline {
+      letter-spacing: 0.18em;
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #4fd1c5;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .skill-pill {
+      font-size: 0.6rem;
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 9px;
+      border-radius: 3px;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .badge {
+      font-size: 0.58rem;
+      background: rgba(79,209,197,0.1);
+      color: #4fd1c5;
+      border: 1px solid rgba(79,209,197,0.3);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .divider-h { border: none; border-top: 1px solid rgba(255,255,255,0.07); }
+    .divider-teal { border: none; border-top: 1px solid rgba(79,209,197,0.15); }
+
+    @media print {
+      body { background: #000; padding: 0; }
+      .page { box-shadow: none; width: 100%; min-height: 100%; }
+      @page { size: letter; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page" style="position:relative;">
+  <a href="https://andrew-panicacci.github.io/" target="_blank" style="position:absolute;inset:0;z-index:999;display:block;" aria-label="View full portfolio"></a>
+
+  <!-- Top accent bar -->
+  <div style="height:5px;background:#4fd1c5;flex-shrink:0;"></div>
+
+  <!-- ── HEADER ── -->
+  <div style="display:flex;align-items:center;gap:0;padding:36px 52px 30px;border-bottom:1px solid rgba(79,209,197,0.18);">
+
+    <!-- Headshot -->
+    <div style="width:108px;height:128px;border-radius:7px;overflow:hidden;flex-shrink:0;margin-right:26px;border:2px solid #4fd1c5;">
+      <img src="images/headshot.jpeg" alt="Andrew Panicacci"
+           style="width:100%;height:100%;object-fit:cover;object-position:center 18%;"
+           onerror="this.parentElement.style.background='#1a1a1a'">
+    </div>
+
+    <!-- Name + title -->
+    <div style="flex:1;">
+      <span class="overline" style="margin-bottom:6px;">Sports Content Creator &amp; Social Media Strategist</span>
+      <h1 class="font-anton" style="font-size:56px;line-height:0.9;letter-spacing:-0.01em;color:#fff;margin-bottom:10px;">ANDREW<br>PANICACCI</h1>
+      <p style="font-size:11.5px;color:rgba(255,255,255,0.38);font-weight:500;">Shoot 360 &nbsp;·&nbsp; Portland, OR &nbsp;·&nbsp; 2024–2026</p>
+      <p style="font-size:12px;color:#4fd1c5;font-weight:500;font-style:italic;margin-top:5px;">"Building basketball brands through storytelling."</p>
+    </div>
+
+    <!-- Contact (top right) -->
+    <div style="flex-shrink:0;margin-left:28px;text-align:right;display:flex;flex-direction:column;gap:5px;justify-content:center;">
+      <p style="font-size:10.5px;color:rgba(255,255,255,0.5);font-weight:500;">andrew.panicacci@gmail.com</p>
+      <p style="font-size:10.5px;color:rgba(255,255,255,0.5);font-weight:500;">(415) 446-8556</p>
+      <span style="font-size:10.5px;color:#4fd1c5;font-weight:600;">andrew-panicacci.github.io</span>
+    </div>
+
+  </div>
+
+  <!-- ── STATS STRIP ── -->
+  <div style="display:flex;align-items:stretch;flex-shrink:0;">
+    <div style="flex:1;text-align:center;padding:17px 10px;border-right:1px solid rgba(255,255,255,0.06);">
+      <p class="font-anton" style="font-size:30px;color:#4fd1c5;line-height:1;margin-bottom:3px;">1,500+</p>
+      <p style="font-size:8.5px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Videos Created</p>
+    </div>
+    <div style="flex:1;text-align:center;padding:17px 10px;border-right:1px solid rgba(255,255,255,0.06);">
+      <p class="font-anton" style="font-size:30px;color:#4fd1c5;line-height:1;margin-bottom:3px;">10M+</p>
+      <p style="font-size:8.5px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Views Generated</p>
+    </div>
+    <div style="flex:1;text-align:center;padding:17px 10px;border-right:1px solid rgba(255,255,255,0.06);">
+      <p class="font-anton" style="font-size:30px;color:#4fd1c5;line-height:1;margin-bottom:3px;">60+</p>
+      <p style="font-size:8.5px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">US Locations</p>
+    </div>
+    <div style="flex:1;text-align:center;padding:17px 10px;border-right:1px solid rgba(255,255,255,0.06);">
+      <p class="font-anton" style="font-size:25px;color:#4fd1c5;line-height:1;margin-bottom:3px;">NBA/WNBA</p>
+      <p style="font-size:8.5px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Athletes Featured</p>
+    </div>
+    <div style="flex:1;text-align:center;padding:17px 10px;">
+      <p class="font-anton" style="font-size:30px;color:#4fd1c5;line-height:1;margin-bottom:3px;">2 YRS</p>
+      <p style="font-size:8.5px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">Production Exp.</p>
+    </div>
+  </div>
+  <hr class="divider-h">
+
+  <!-- ── ABOUT + SKILLS (two-col) ── -->
+  <div style="display:flex;gap:0;padding:26px 52px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,0.07);">
+
+    <!-- About -->
+    <div style="flex:3;padding-right:32px;border-right:1px solid rgba(255,255,255,0.07);">
+      <span class="overline">About</span>
+      <p style="font-size:11.5px;color:rgba(255,255,255,0.7);line-height:1.7;">
+        Social media strategist and content creator with experience producing
+        <strong style="color:#fff;">1,500+ pieces of sports content</strong>
+        across Instagram, TikTok, YouTube, and digital campaigns. Specialized in basketball storytelling,
+        short-form video strategy, athlete branding, and franchise marketing systems — executing
+        national campaigns, league promotions, event coverage, and technology-focused sports marketing
+        for one of basketball's fastest-growing brands, spanning 60+ US locations.
+      </p>
+    </div>
+
+    <!-- Skills -->
+    <div style="flex:2;padding-left:32px;">
+      <span class="overline">Skills &amp; Tools</span>
+      <div style="display:flex;flex-direction:column;gap:11px;">
+        <div>
+          <p style="font-size:8.5px;color:rgba(255,255,255,0.28);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;">Platforms</p>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="skill-pill">Instagram</span>
+            <span class="skill-pill">TikTok</span>
+            <span class="skill-pill">YouTube</span>
+            <span class="skill-pill">Facebook</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:8.5px;color:rgba(255,255,255,0.28);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;">Production Tools</p>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="skill-pill">CapCut</span>
+            <span class="skill-pill">Adobe Premiere Pro</span>
+            <span class="skill-pill">Mobile-First</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:8.5px;color:rgba(255,255,255,0.28);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px;">Industry Focus</p>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="skill-pill">Athlete Branding</span>
+            <span class="skill-pill">Franchise Marketing</span>
+            <span class="skill-pill">Sports Technology</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── FEATURED WORK ── -->
+  <div style="flex:1;padding:22px 52px 20px;border-bottom:1px solid rgba(255,255,255,0.07);">
+    <span class="overline">Featured Work</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+
+      <!-- HER MONTH Campaign -->
+      <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:#0a0a0a;display:flex;flex-direction:column;">
+        <div style="height:88px;overflow:hidden;position:relative;background:#fff;">
+          <img src="images/the future of basketball is HER.PNG" alt="HER Month Campaign"
+               style="width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;"
+               onerror="this.parentElement.style.background='#1a1a1a'">
+          <div style="position:absolute;top:7px;left:7px;"><span class="badge">Campaign</span></div>
+        </div>
+        <div style="padding:10px 12px;flex-shrink:0;">
+          <p class="font-anton" style="font-size:12px;color:#fff;margin-bottom:3px;letter-spacing:0.02em;">HER MONTH CAMPAIGN</p>
+          <p style="font-size:9.5px;color:rgba(255,255,255,0.45);line-height:1.5;">Nationwide women's basketball campaign featuring former WNBA players, girls clinics, and Nike-affiliated activations.</p>
+        </div>
+      </div>
+
+      <!-- Athlete Content Series -->
+      <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:#0a0a0a;display:flex;flex-direction:column;">
+        <div style="height:88px;overflow:hidden;position:relative;">
+          <img src="images/Tayler Hill Q-A Thumbnail.jpg" alt="Athlete Q&A Series"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"
+               onerror="this.parentElement.style.background='#1a1a1a'">
+          <div style="position:absolute;top:7px;left:7px;"><span class="badge">Athlete Content</span></div>
+        </div>
+        <div style="padding:10px 12px;flex-shrink:0;">
+          <p class="font-anton" style="font-size:12px;color:#fff;margin-bottom:3px;letter-spacing:0.02em;">ATHLETE Q&amp;A SERIES</p>
+          <p style="font-size:9.5px;color:rgba(255,255,255,0.45);line-height:1.5;">Long-form interviews and short-form social cuts featuring NBA/WNBA athletes across multiple platforms.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Video strip -->
+    <span class="overline" style="margin-bottom:10px;">Video Content Samples</span>
+    <div style="display:flex;gap:10px;">
+
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="height:148px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+          <img src="images/vid1.png" alt="Coaching Moments" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <p style="font-size:8.5px;color:rgba(255,255,255,0.5);font-weight:600;text-align:center;margin-top:5px;letter-spacing:0.03em;">Coaching Moments</p>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="height:148px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+          <img src="images/vid2.png" alt="Viral Coaching Moment" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <p style="font-size:8.5px;color:rgba(255,255,255,0.5);font-weight:600;text-align:center;margin-top:5px;letter-spacing:0.03em;">Viral Coaching Moment</p>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="height:148px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+          <img src="images/vid3.png" alt="Women in Basketball" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <p style="font-size:8.5px;color:rgba(255,255,255,0.5);font-weight:600;text-align:center;margin-top:5px;letter-spacing:0.03em;">Women in Basketball</p>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="height:148px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+          <img src="images/vid4.png" alt="POV Gym Tour" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <p style="font-size:8.5px;color:rgba(255,255,255,0.5);font-weight:600;text-align:center;margin-top:5px;letter-spacing:0.03em;">POV Gym Tour</p>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="height:148px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+          <img src="images/vid5.png" alt="UGC / Brand Moments" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <p style="font-size:8.5px;color:rgba(255,255,255,0.5);font-weight:600;text-align:center;margin-top:5px;letter-spacing:0.03em;">UGC / Brand Moments</p>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="height:148px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
+          <img src="images/vid6.png" alt="Athlete Testimonials" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <p style="font-size:8.5px;color:rgba(255,255,255,0.5);font-weight:600;text-align:center;margin-top:5px;letter-spacing:0.03em;">Athlete Testimonials</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TAP CTA BANNER ── -->
+  <div style="text-align:center;padding:13px 52px;background:rgba(79,209,197,0.08);border-top:1px solid rgba(79,209,197,0.25);border-bottom:1px solid rgba(79,209,197,0.25);flex-shrink:0;">
+    <p style="font-size:10.5px;color:#4fd1c5;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">▶ &nbsp; Tap anywhere to watch the full reel &amp; explore the portfolio &nbsp; ▶</p>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(79,209,197,0.03);flex-shrink:0;">
+
+    <!-- QR code + URL -->
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=72x72&data=https%3A%2F%2Fandrew-panicacci.github.io&bgcolor=000000&color=4fd1c5&margin=2"
+           alt="Scan for full portfolio"
+           style="width:64px;height:64px;border-radius:4px;border:1px solid rgba(79,209,197,0.25);"
+           onerror="this.style.display='none'">
+      <div>
+        <p style="font-size:8px;color:rgba(255,255,255,0.3);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;">Full Portfolio &amp; Video Reel</p>
+        <p style="font-size:12px;color:#4fd1c5;font-weight:600;letter-spacing:0.02em;">andrew-panicacci.github.io</p>
+        <p style="font-size:9.5px;color:rgba(255,255,255,0.28);margin-top:2px;">Scan or visit · Videos, campaigns &amp; more</p>
+      </div>
+    </div>
+
+    <!-- Logo + contact -->
+    <div style="text-align:right;">
+      <p class="font-anton" style="font-size:30px;color:#fff;line-height:1;margin-bottom:6px;">AP.</p>
+      <p style="font-size:10.5px;color:rgba(255,255,255,0.45);margin-bottom:2px;">andrew.panicacci@gmail.com</p>
+      <p style="font-size:10.5px;color:rgba(255,255,255,0.45);">(415) 446-8556 &nbsp;·&nbsp; Portland, OR</p>
+    </div>
+
+  </div>
+  <hr class="divider-teal">
+
+  <!-- Bottom accent bar -->
+  <div style="height:5px;background:#4fd1c5;flex-shrink:0;"></div>
+
+</div>
+</body>
+</html>
